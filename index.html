@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colegio Montano - Psychodynamic & Humanistic Approaches Study Guide</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        montanoBlue: '#1269A8',
+                        montanoYellow: '#F7D615',
+                        montanoTeal: '#54887D',
+                        montanoLightBlue: '#88B5C7',
+                        montanoOlive: '#A6B046',
+                        montanoSoftWhite: '#F2F5E9'
+                    },
+                    fontFamily: {
+                        sans: ['Nunito', 'Segoe UI', 'Tahoma', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --montano-blue: #1269A8;
+            --montano-yellow: #F7D615;
+            --montano-teal: #54887D;
+            --montano-lightblue: #88B5C7;
+            --montano-olive: #A6B046;
+            --montano-softwhite: #F2F5E9;
+        }
+
+        body {
+            background-color: #E2E8F0;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .whiteboard-frame {
+            background-color: #FFFFFF;
+            border: 12px solid #CBD5E1;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            position: relative;
+        }
+
+        .tab-btn {
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background-color: var(--montano-blue);
+            color: #FFFFFF;
+            border-bottom: 4px solid var(--montano-yellow);
+        }
+
+        .tab-btn:not(.active):hover {
+            background-color: #E2E8F0;
+            color: var(--montano-blue);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F5F9;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: var(--montano-lightblue);
+            border-radius: 4px;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 0.4; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .recording-pulse {
+            animation: pulse-ring 1.5s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="p-2 sm:p-4 min-h-screen">
+
+    <!-- Main Container / Whiteboard Frame -->
+    <div id="whiteboardContainer" class="whiteboard-frame max-w-7xl mx-auto min-h-[90vh] flex flex-col overflow-hidden">
+        
+        <!-- Institutional Header -->
+        <header class="bg-montanoSoftWhite border-b border-gray-300 p-4 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center space-x-4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyEop0yf6lZ7Jk9MILZxF1rBj4Oqs5esyhIQ&s" 
+                     alt="Colegio Montano Logo" 
+                     class="h-14 w-auto object-contain rounded-md shadow-sm bg-white p-1"
+                     onerror="this.src='https://placehold.co/120x60/1269A8/FFFFFF?text=Colegio+Montano'">
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-extrabold text-montanoBlue leading-tight">COLEGIO MONTANO</h1>
+                    <p class="text-sm font-semibold text-montanoTeal">Psychology & Human Behavior | Unit 3 - Guide 4 (Grade 11 ESL B2/C1)</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <span class="bg-montanoTeal/20 text-montanoTeal font-bold text-xs px-3 py-1.5 rounded-full border border-montanoTeal/40">
+                    <i class="fa-solid fa-users-viewfinder mr-1"></i> Theoretical Paradigms
+                </span>
+                <button onclick="toggleFullscreen()" title="Toggle Fullscreen" class="bg-montanoBlue hover:bg-sky-800 text-white font-bold p-2.5 rounded-xl shadow transition duration-200 flex items-center justify-center">
+                    <i id="fullscreenIcon" class="fa-solid fa-expand text-lg"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Topic Banner -->
+        <div class="bg-montanoBlue text-white px-6 py-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+            <div>
+                <h2 class="text-xl font-bold text-montanoYellow flex items-center gap-2">
+                    <i class="fa-solid fa-brain-circuit"></i> Psychodynamic and Humanistic Approaches
+                </h2>
+                <p class="text-xs sm:text-sm text-gray-100">Unconscious Determinism vs. Human Potential, Self-Concept & Fictional Character Comparisons</p>
+            </div>
+            <div class="text-xs bg-white/10 px-3 py-1.5 rounded-lg border border-white/20">
+                <i class="fa-solid fa-earth-americas text-montanoYellow"></i> Target Level: B2 High - C1 (Advanced ESL)
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="bg-gray-100 border-b border-gray-300 flex overflow-x-auto custom-scrollbar font-bold text-xs sm:text-sm text-gray-600">
+            <button onclick="switchTab('tab1')" id="tab1-btn" class="tab-btn active px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-book-open"></i> 1. Theoretical Foundations
+            </button>
+            <button onclick="switchTab('tab2')" id="tab2-btn" class="tab-btn px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-list-check"></i> 2. Solved Examples (15)
+            </button>
+            <button onclick="switchTab('tab3')" id="tab3-btn" class="tab-btn px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-microphone-lines"></i> 3. Voice Simulator & Dashboard
+            </button>
+            <button onclick="switchTab('tab4')" id="tab4-btn" class="tab-btn px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-comments"></i> 4. Critical Reflection
+            </button>
+            <button onclick="switchTab('tab5')" id="tab5-btn" class="tab-btn px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-pen-to-square"></i> 5. Formative Evaluation (15)
+            </button>
+        </nav>
+
+        <!-- Content Body Area -->
+        <main class="p-4 sm:p-6 flex-grow bg-white overflow-y-auto custom-scrollbar">
+
+            <!-- TAB 1: THEORETICAL FOUNDATIONS -->
+            <section id="tab1" class="tab-content space-y-6">
+                <div class="border-l-4 border-montanoBlue bg-blue-50/50 p-4 rounded-r-xl">
+                    <h3 class="text-xl font-bold text-montanoBlue mb-1">Two Contrasting Visions of Human Nature</h3>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        In psychology, the **Psychodynamic** perspective (Freud) views personality as driven by unconscious conflicts and childhood experiences, while the **Humanistic** perspective (Rogers & Maslow) focuses on conscious free will, positive self-concept, and the drive toward self-actualization.
+                    </p>
+                </div>
+
+                <!-- Section 1: Freud's Psychodynamic Framework -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-water text-montanoBlue"></i> 1. Sigmund Freud: The Unconscious Mind & Structural Personality
+                    </h4>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-slate-50 border border-slate-300 rounded-2xl p-4 space-y-2 shadow-sm">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold bg-slate-700 text-white px-2.5 py-0.5 rounded-full">Biological Drives</span>
+                                <i class="fa-solid fa-volcano text-slate-700 text-xl"></i>
+                            </div>
+                            <h5 class="font-bold text-gray-800 text-base">The Id (Pleasure Principle)</h5>
+                            <p class="text-xs text-gray-600 leading-relaxed">
+                                Completely unconscious. Contains primal biological instincts, aggressive impulses, and immediate gratification demands.
+                            </p>
+                        </div>
+
+                        <div class="bg-blue-50 border border-montanoBlue rounded-2xl p-4 space-y-2 shadow-sm">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold bg-montanoBlue text-white px-2.5 py-0.5 rounded-full">Realistic Executive</span>
+                                <i class="fa-solid fa-scale-balanced text-montanoBlue text-xl"></i>
+                            </div>
+                            <h5 class="font-bold text-gray-800 text-base">The Ego (Reality Principle)</h5>
+                            <p class="text-xs text-gray-600 leading-relaxed">
+                                Mostly conscious and preconscious. Mediates realistic compromises between the Id's desires, environmental limits, and Super-Ego rules.
+                            </p>
+                        </div>
+
+                        <div class="bg-amber-50 border border-amber-400 rounded-2xl p-4 space-y-2 shadow-sm">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold bg-amber-600 text-white px-2.5 py-0.5 rounded-full">Moral Compass</span>
+                                <i class="fa-solid fa-gavel text-amber-600 text-xl"></i>
+                            </div>
+                            <h5 class="font-bold text-gray-800 text-base">The Super-Ego (Ideal Principle)</h5>
+                            <p class="text-xs text-gray-600 leading-relaxed">
+                                Internalized moral standards, parental rules, and societal ideals. Produces pride when obeyed and guilt when violated.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Iceberg Metaphor Box -->
+                    <div class="bg-montanoSoftWhite border-l-4 border-montanoLightBlue p-4 rounded-r-xl text-xs space-y-1">
+                        <strong class="text-montanoBlue text-sm flex items-center gap-1.5">
+                            <i class="fa-solid fa-icicles"></i> The Iceberg Metaphor & Defense Mechanisms
+                        </strong>
+                        <p class="text-gray-700 leading-relaxed">
+                            Freud compared the mind to an iceberg: only a small tip (Conscious) is visible, while the massive base (Unconscious) stores repressed memories and traumatic early experiences. When ego anxiety arises from Id vs. Super-Ego conflict, **Defense Mechanisms** (e.g., Reaction Formation, Projection, Repression, Displacement) operate automatically to protect conscious awareness.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Section 2: Humanistic Approach -->
+                <div class="space-y-4 pt-4 border-t border-gray-200">
+                    <h4 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-seedling text-montanoTeal"></i> 2. Humanistic Psychology: Rogers, Maslow & Personal Growth
+                    </h4>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Carl Rogers -->
+                        <div class="bg-teal-50/60 border border-teal-300 rounded-2xl p-4 space-y-3">
+                            <h5 class="font-bold text-teal-900 text-base flex items-center gap-2">
+                                <i class="fa-solid fa-heart-pulse text-teal-600"></i> Carl Rogers: Self-Concept & Conditions of Worth
+                            </h5>
+                            <ul class="text-xs text-gray-700 space-y-1.5 list-disc pl-4">
+                                <li><strong>Self-Concept:</strong> The organized set of beliefs and perceptions a person holds about themselves ("Who am I?").</li>
+                                <li><strong>Congruence vs. Incongruence:</strong> Harmony between the <em>Real Self</em> (who you actually are) and the <em>Ideal Self</em> (who you wish to be). High incongruence creates anxiety.</li>
+                                <li><strong>Unconditional Positive Regard:</strong> Total acceptance and warmth without conditions, necessary for healthy self-actualization.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Abraham Maslow -->
+                        <div class="bg-lime-50/60 border border-lime-300 rounded-2xl p-4 space-y-3">
+                            <h5 class="font-bold text-lime-900 text-base flex items-center gap-2">
+                                <i class="fa-solid fa-arrow-up-short-wide text-lime-600"></i> Abraham Maslow: Hierarchy of Needs
+                            </h5>
+                            <ul class="text-xs text-gray-700 space-y-1.5 list-disc pl-4">
+                                <li><strong>Hierarchy Pyramid:</strong> Moves from Physiological & Safety needs up through Belongingness, Esteem, to Self-Actualization.</li>
+                                <li><strong>Self-Actualization:</strong> The motivation to fulfill one's unique potential and reach peak personal growth.</li>
+                                <li><strong>Growth Mindset:</strong> Views humans as innately constructive, self-directing beings rather than victims of unconscious instincts.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Comparative Grid: Fictional Character Behavioral Analysis -->
+                <div class="space-y-3">
+                    <h4 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-masks-theater text-montanoBlue"></i> 3. Comparing Character Interpretation (Fictional Example)
+                    </h4>
+                    <p class="text-xs sm:text-sm text-gray-600">
+                        Consider a fictional protagonist who displays intense perfectionism and isolation:
+                    </p>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm border-collapse rounded-xl overflow-hidden shadow-sm">
+                            <thead>
+                                <tr class="bg-montanoBlue text-white">
+                                    <th class="p-3">Analytical Dimension</th>
+                                    <th class="p-3">Psychodynamic Perspective (Freud)</th>
+                                    <th class="p-3">Humanistic Perspective (Rogers / Maslow)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 bg-gray-50 text-xs sm:text-sm">
+                                <tr>
+                                    <td class="p-3 font-bold text-montanoBlue">Root Cause of Behavior</td>
+                                    <td class="p-3 text-slate-800">Unconscious conflict between a harsh Super-Ego and repressed childhood trauma.</td>
+                                    <td class="p-3 text-teal-800">Incongruence between Real Self and Ideal Self caused by conditional positive regard.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold text-montanoBlue">View of Human Agency</td>
+                                    <td class="p-3 text-slate-800">Deterministic; behavior is dictated by hidden unconscious drives.</td>
+                                    <td class="p-3 text-teal-800">Free Will; individuals possess continuous capacity for growth and self-determination.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold text-montanoBlue">Path to Resolution</td>
+                                    <td class="p-3 text-slate-800">Bringing repressed unconscious memories into conscious awareness through psychoanalysis.</td>
+                                    <td class="p-3 text-teal-800">Receiving Unconditional Positive Regard to align Real and Ideal Self toward self-actualization.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: SOLVED EXAMPLES (15 EXAMPLES) -->
+            <section id="tab2" class="tab-content hidden space-y-6">
+                <div class="flex justify-between items-center border-b pb-3">
+                    <div>
+                        <h3 class="text-xl font-bold text-montanoBlue">15 Solved & Categorized Paradigm Examples</h3>
+                        <p class="text-xs text-gray-500">Listen to native audio explanations using the speaker button.</p>
+                    </div>
+                    <span class="text-xs font-semibold bg-montanoYellow/30 text-yellow-800 px-3 py-1 rounded-full border border-montanoYellow">
+                        <i class="fa-solid fa-volume-high"></i> Text-to-Speech Ready
+                    </span>
+                </div>
+
+                <!-- Level 1: Basic Examples -->
+                <div class="space-y-4">
+                    <h4 class="text-md font-bold text-white bg-montanoBlue px-4 py-2 rounded-xl flex items-center gap-2">
+                        <i class="fa-solid fa-seedling"></i> Level 1: Basic Concept Identification (Examples 1 - 5)
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="basicExamplesGrid"></div>
+                </div>
+
+                <!-- Level 2: Intermediate Examples -->
+                <div class="space-y-4 pt-4">
+                    <h4 class="text-md font-bold text-white bg-montanoTeal px-4 py-2 rounded-xl flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group"></i> Level 2: Fictional Character Interpretations (Examples 6 - 10)
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="intermediateExamplesGrid"></div>
+                </div>
+
+                <!-- Level 3: Advanced Examples -->
+                <div class="space-y-4 pt-4">
+                    <h4 class="text-md font-bold text-white bg-montanoOlive px-4 py-2 rounded-xl flex items-center gap-2">
+                        <i class="fa-solid fa-brain"></i> Level 3: Advanced Paradigm Comparisons & Critiques (Examples 11 - 15)
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="advancedExamplesGrid"></div>
+                </div>
+            </section>
+
+            <!-- TAB 3: LIVE VOICE SIMULATOR & DASHBOARD -->
+            <section id="tab3" class="tab-content hidden space-y-6">
+                <div class="bg-gradient-to-r from-montanoBlue to-sky-900 text-white p-6 rounded-2xl shadow-md">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <span class="bg-montanoYellow text-gray-900 font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Theoretical Simulator Lab</span>
+                            <h3 class="text-2xl font-bold mt-1">Live Paradigm Speech Evaluator</h3>
+                            <p class="text-xs sm:text-sm text-sky-100">Practice contrasting Freud's psychodynamic determinism with Rogers' humanistic personal growth via voice input. Real-time metric feedback.</p>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl border border-white/20">
+                            <i class="fa-solid fa-robot text-montanoYellow text-xl"></i>
+                            <span class="text-xs font-semibold">AI Evaluator Active</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <!-- Speech Simulator Interface -->
+                    <div class="lg:col-span-7 bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-4 flex flex-col justify-between">
+                        
+                        <!-- Scenario Prompt Box -->
+                        <div class="bg-montanoSoftWhite border-l-4 border-montanoBlue p-4 rounded-r-xl">
+                            <span class="text-xs font-bold text-montanoBlue uppercase">Current Paradigm Prompt</span>
+                            <p id="simPrompt" class="text-sm font-semibold text-gray-800 mt-1">
+                                "Compare how Sigmund Freud and Carl Rogers would interpret a fictional character who struggles with severe perfectionism."
+                            </p>
+                            <button onclick="newSimPrompt()" class="mt-2 text-xs text-montanoBlue hover:underline font-bold flex items-center gap-1">
+                                <i class="fa-solid fa-rotate"></i> Change Prompt
+                            </button>
+                        </div>
+
+                        <!-- Audio Output of AI Character -->
+                        <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-xl border border-gray-200">
+                            <div class="w-10 h-10 rounded-full bg-montanoBlue flex items-center justify-center text-white font-bold text-lg">
+                                Dr.M
+                            </div>
+                            <div class="flex-grow">
+                                <p class="text-xs text-gray-500 font-bold">Dr. Montano (AI Instructor):</p>
+                                <p id="aiResponseText" class="text-xs text-gray-700 italic">"Click the microphone or type below. I am ready to evaluate your psychodynamic vs. humanistic explanation."</p>
+                            </div>
+                            <button onclick="speakAIResponse()" class="bg-montanoBlue/10 text-montanoBlue p-2 rounded-lg hover:bg-montanoBlue/20">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                        </div>
+
+                        <!-- User Input Section -->
+                        <div class="space-y-3">
+                            <label class="block text-xs font-bold text-gray-600 uppercase">Your Spoken or Written Response:</label>
+                            
+                            <div class="relative">
+                                <textarea id="speechTransmittedText" rows="3" 
+                                    class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-montanoBlue focus:outline-none custom-scrollbar"
+                                    placeholder="Click the microphone and speak, or type your response here..."></textarea>
+                                
+                                <span id="recordingBadge" class="hidden absolute top-3 right-3 bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full recording-pulse flex items-center gap-1">
+                                    <i class="fa-solid fa-circle"></i> LISTENING
+                                </span>
+                            </div>
+
+                            <div class="flex flex-wrap items-center justify-between gap-3">
+                                <button id="micBtn" onclick="toggleSpeechRecognition()" 
+                                    class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-4 py-2.5 rounded-xl shadow text-xs sm:text-sm flex items-center gap-2 transition">
+                                    <i class="fa-solid fa-microphone text-base"></i>
+                                    <span id="micBtnText">Start Speaking</span>
+                                </button>
+
+                                <button onclick="evaluateSpeechInput()" 
+                                    class="bg-montanoBlue hover:bg-sky-800 text-white font-bold px-6 py-2.5 rounded-xl shadow text-xs sm:text-sm flex items-center gap-2 transition">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i> Evaluate Response
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Performance Dashboard -->
+                    <div class="lg:col-span-5 bg-gray-50 border border-gray-200 rounded-2xl p-5 shadow-sm space-y-4">
+                        <h4 class="text-md font-bold text-gray-800 border-b pb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line text-montanoBlue"></i> Live Performance Dashboard
+                        </h4>
+
+                        <!-- Metric 1: Pronunciation & Speech Clarity -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span class="text-gray-700">Pronunciation & Speech Clarity</span>
+                                <span id="scorePronunciationText" class="text-montanoBlue">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div id="barPronunciation" class="bg-montanoBlue h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Metric 2: Topic / Grammar Accuracy -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span class="text-gray-700">Topic & Academic Vocabulary Accuracy</span>
+                                <span id="scoreAccuracyText" class="text-montanoTeal">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div id="barAccuracy" class="bg-montanoTeal h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Metric 3: Politeness / Expression Etiquette -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span class="text-gray-700">Academic Etiquette & Discourse</span>
+                                <span id="scoreEtiquetteText" class="text-montanoOlive">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div id="barEtiquette" class="bg-montanoOlive h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Detected Key Terms Container -->
+                        <div class="space-y-2">
+                            <span class="text-xs font-bold text-gray-600 block">Detected Psychological Terms:</span>
+                            <div id="keywordBadgeContainer" class="flex flex-wrap gap-1.5 min-h-[40px] p-2 bg-white rounded-xl border border-gray-200">
+                                <span class="text-xs text-gray-400 italic">No keywords detected yet...</span>
+                            </div>
+                        </div>
+
+                        <!-- AI Feedback Box -->
+                        <div class="bg-white p-3.5 rounded-xl border border-gray-200 space-y-1">
+                            <span class="text-xs font-bold text-montanoBlue flex items-center gap-1">
+                                <i class="fa-solid fa-lightbulb text-montanoYellow"></i> AI Pedagogical Feedback
+                            </span>
+                            <p id="aiPedagogicalFeedback" class="text-xs text-gray-600 leading-relaxed">
+                                Speak or type your answer above to receive constructive feedback on your understanding of psychodynamic and humanistic theories.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: CRITICAL REFLECTION QUESTIONS -->
+            <section id="tab4" class="tab-content hidden space-y-6">
+                <div class="border-l-4 border-montanoTeal bg-teal-50/50 p-4 rounded-r-xl">
+                    <h3 class="text-xl font-bold text-montanoTeal">Critical Reflection & Practical Application</h3>
+                    <p class="text-sm text-gray-600">Formulate high-level analytical answers (B2-C1 ESL syntax). Write your arguments into the textareas below and save your responses.</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Reflection 1 -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-3">
+                        <label class="block font-bold text-gray-800 text-sm sm:text-base">
+                            1. Select a famous villain or antihero from a book or movie. Contrast how Freud (unconscious conflict/Id-Superego) and Rogers (incongruence/conditional positive regard) would analyze their character development.
+                        </label>
+                        <textarea id="refl1" rows="3" class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-montanoTeal focus:outline-none" placeholder="Write your fictional analysis here..."></textarea>
+                    </div>
+
+                    <!-- Reflection 2 -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-3">
+                        <label class="block font-bold text-gray-800 text-sm sm:text-base">
+                            2. Analyze Maslow's Hierarchy of Needs in the context of high school students. How does a lack of psychological safety or belongingness hinder a student's ability to achieve self-actualization?
+                        </label>
+                        <textarea id="refl2" rows="3" class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-montanoTeal focus:outline-none" placeholder="Write your reflection here..."></textarea>
+                    </div>
+
+                    <!-- Reflection 3 -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-3">
+                        <label class="block font-bold text-gray-800 text-sm sm:text-base">
+                            3. Evaluate the philosophical divide: Do you believe human behavior is primarily determined by unconscious instincts (Freud) or by free will and personal growth potential (Rogers/Maslow)? Justify your position.
+                        </label>
+                        <textarea id="refl3" rows="3" class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-montanoTeal focus:outline-none" placeholder="Write your synthesis argument here..."></textarea>
+                    </div>
+
+                    <div class="flex justify-end">
+                        <button onclick="saveReflections()" class="bg-montanoTeal hover:bg-teal-700 text-white font-bold px-6 py-2.5 rounded-xl shadow text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-floppy-disk"></i> Save Reflections
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 5: FORMATIVE EVALUATION (15 PROBLEMS) -->
+            <section id="tab5" class="tab-content hidden space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b pb-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-montanoBlue">15 Formative Evaluation Exercises</h3>
+                        <p class="text-xs text-gray-500">Test your understanding of psychodynamic mechanisms, humanistic principles, self-concept, and fictional character analyses.</p>
+                    </div>
+                    <span class="bg-montanoOlive/20 text-montanoOlive font-bold text-xs px-3 py-1 rounded-full border border-montanoOlive">
+                        15 Interactive Toggles
+                    </span>
+                </div>
+
+                <!-- Level 1 Formative Exercises -->
+                <div class="space-y-4">
+                    <h4 class="text-sm font-extrabold text-montanoBlue bg-blue-50 border-l-4 border-montanoBlue p-3 rounded-r-lg">
+                        LEVEL 1: BASIC CONCEPT & DEFINITION IDENTIFICATION (EXERCISES 1 - 5)
+                    </h4>
+                    <div class="space-y-3" id="evalLevel1Container"></div>
+                </div>
+
+                <!-- Level 2 Formative Exercises -->
+                <div class="space-y-4 pt-4">
+                    <h4 class="text-sm font-extrabold text-montanoTeal bg-teal-50 border-l-4 border-montanoTeal p-3 rounded-r-lg">
+                        LEVEL 2: FICTIONAL CHARACTER INTERPRETATIONS (EXERCISES 6 - 10)
+                    </h4>
+                    <div class="space-y-3" id="evalLevel2Container"></div>
+                </div>
+
+                <!-- Level 3 Formative Exercises -->
+                <div class="space-y-4 pt-4">
+                    <h4 class="text-sm font-extrabold text-montanoOlive bg-lime-50 border-l-4 border-montanoOlive p-3 rounded-r-lg">
+                        LEVEL 3: ADVANCED THEORETICAL COMPARISON & CRITIQUE (EXERCISES 11 - 15)
+                    </h4>
+                    <div class="space-y-3" id="evalLevel3Container"></div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Institutional Footer -->
+        <footer class="bg-montanoSoftWhite border-t border-gray-300 px-6 py-3 text-xs text-gray-600 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div>
+                <span class="font-bold text-montanoBlue">Colegio Montano</span> &copy; 2026 - Educational Technology Department
+            </div>
+            <div class="flex items-center space-x-4">
+                <span>Grade 11 - Psychology</span>
+                <span>•</span>
+                <span>Unit 3: Guide 4</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-gray-900 text-white text-xs px-4 py-3 rounded-xl shadow-xl hidden transition-all z-50 flex items-center gap-2">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toastMsg">Action completed successfully.</span>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        /* --------------------------------------------------
+           DATA: 15 SOLVED EXAMPLES
+        -------------------------------------------------- */
+        const solvedExamplesData = [
+            // Level 1: Basic
+            {
+                id: 1, level: 1,
+                title: "Identifying the Ego's Role",
+                category: "Psychodynamic",
+                scenario: "A hungry student wants to grab food off someone else's plate (Id demand) but decides to wait in line to buy their own meal.",
+                explanation: "Exemplifies the **Ego (Reality Principle)**. The Ego finds a realistic, socially acceptable way to satisfy biological Id instincts."
+            },
+            {
+                id: 2, level: 1,
+                title: "Super-Ego Guilt Response",
+                category: "Psychodynamic",
+                scenario: "Even after winning a game through a slight hidden foul, Alex feels intense guilt and cannot enjoy the trophy.",
+                explanation: "Demonstrates the **Super-Ego (Moral Ideal)**. It acts as the internal moral authority, enforcing punishment through guilt."
+            },
+            {
+                id: 3, level: 1,
+                title: "Carl Rogers: Self-Concept Incongruence",
+                category: "Humanistic",
+                scenario: "Maya wants to be an artist (Ideal Self), but studies accounting to please her parents (Real Self actions), causing deep anxiety.",
+                explanation: "Illustrates **Incongruence**. The gap between her Real Self experience and Ideal Self creates psychological distress."
+            },
+            {
+                id: 4, level: 1,
+                title: "Maslow's Need for Belongingness",
+                category: "Humanistic",
+                scenario: "Before pursuing creative writing awards, a student first seeks reliable friends and a safe study environment.",
+                explanation: "Reflects **Maslow's Hierarchy**. Lower-order needs (Safety & Social Belonging) must be satisfied before reaching Self-Actualization."
+            },
+            {
+                id: 5, level: 1,
+                title: "Defense Mechanism: Projection",
+                category: "Psychodynamic",
+                scenario: "A student who secretly feels insecure about their grades accuses all their classmates of being obsessed with competition.",
+                explanation: "Demonstrates **Projection**. Unconscious anxiety is managed by attributing one's own unacceptable feelings onto others."
+            },
+            // Level 2: Intermediate Fictional Interpretations
+            {
+                id: 6, level: 2,
+                title: "Fictional Analysis: Darth Vader (Freud)",
+                category: "Psychodynamic Character",
+                scenario: "Anakin Skywalker's transition to Darth Vader driven by unaddressed childhood trauma and fear of loss.",
+                explanation: "Psychodynamic view: Unconscious repressed grief and unresolved early childhood attachment trauma manifest as destructive Id aggression."
+            },
+            {
+                id: 7, level: 2,
+                title: "Fictional Analysis: Darth Vader (Rogers)",
+                category: "Humanistic Character",
+                scenario: "Vader's eventual redemption when Luke offers him unconditional love and acceptance.",
+                explanation: "Humanistic view: Receiving **Unconditional Positive Regard** heals incongruence, restoring his capacity for self-actualization."
+            },
+            {
+                id: 8, level: 2,
+                title: "Fictional Analysis: The Grinch",
+                category: "Character Contrast",
+                scenario: "The Grinch hates Whoville due to childhood bullying, but changes when accepted by the community.",
+                explanation: "Psychodynamic attributes hatred to childhood trauma; Humanism attributes transformation to unconditional social acceptance."
+            },
+            {
+                id: 9, level: 2,
+                title: "Unconditional Positive Regard in Parenting",
+                category: "Humanistic Practice",
+                scenario: "Parents tell their child: 'We love you completely, even when you make mistakes in your choices.'",
+                explanation: "Fosters healthy **Self-Concept** by separating the child's intrinsic worth from conditional accomplishments."
+            },
+            {
+                id: 10, level: 2,
+                title: "Defense Mechanism: Reaction Formation",
+                category: "Psychodynamic Mechanism",
+                scenario: "A person who harbors unconscious anger toward a rival acts excessively polite and overly complimentary toward them.",
+                explanation: "The Ego transforms an unacceptable unconscious impulse into its exact opposite behavior to keep anxiety hidden."
+            },
+            // Level 3: Advanced
+            {
+                id: 11, level: 3,
+                title: "Determinism vs. Free Will",
+                category: "Theoretical Critique",
+                scenario: "Contrast Freud's view of human agency with Maslow's view.",
+                explanation: "Freud is **Deterministic** (behavior is governed by unconscious forces); Maslow believes in **Free Will** and inherent growth potential."
+            },
+            {
+                id: 12, level: 3,
+                title: "Scientific Criticism of Psychoanalysis",
+                category: "Methodological Critique",
+                scenario: "Why do modern experimental psychologists criticize Freudian concepts like the Id or Repression?",
+                explanation: "They rely on unobservable constructs that cannot be empirically tested or falsified in controlled scientific experiments."
+            },
+            {
+                id: 13, level: 3,
+                title: "Criticism of Humanistic Subjectivity",
+                category: "Methodological Critique",
+                scenario: "Why is self-actualization difficult to evaluate scientifically?",
+                explanation: "Concepts like 'self-actualization' are vaguely defined and rely heavily on self-reports rather than objective behavioral metrics."
+            },
+            {
+                id: 14, level: 3,
+                title: "Conditions of Worth Impact",
+                category: "Humanistic Theory",
+                scenario: "A student only feels valuable when achieving 100% test scores due to parental pressure.",
+                explanation: "Demonstrates **Conditions of Worth**, where positive regard is conditional, distorting the student's authentic self-concept."
+            },
+            {
+                id: 15, level: 3,
+                title: "Synthesis of Both Paradigms",
+                category: "Modern Integration",
+                scenario: "How do modern therapists combine psychodynamic insights with humanistic approaches?",
+                explanation: "They explore past unconscious patterns (Psychodynamic) while offering an empathetic, non-judgmental environment (Humanistic) for growth."
+            }
+        ];
+
+        /* --------------------------------------------------
+           DATA: 15 FORMATIVE EVALUATION EXERCISES
+        -------------------------------------------------- */
+        const evaluationExercisesData = [
+            // Level 1 (1 - 5)
+            {
+                id: 1, level: 1,
+                question: "Identify Construct: Which component of Freud's personality structure operates entirely in the unconscious under the Pleasure Principle?",
+                solution: "Answer: The Id. It demands instant gratification of primitive biological drives."
+            },
+            {
+                id: 2, level: 1,
+                question: "Identify Theorist: Who formulated the Hierarchy of Needs ending in Self-Actualization?",
+                solution: "Answer: Abraham Maslow."
+            },
+            {
+                id: 3, level: 1,
+                question: "Define Term: What is the term for Carl Rogers' concept of alignment between the Real Self and the Ideal Self?",
+                solution: "Answer: Congruence (Incongruence is the gap/state of mismatch)."
+            },
+            {
+                id: 4, level: 1,
+                question: "Classify Mechanism: A student angry at a teacher goes home and kicks a soccer ball aggressively against a wall. What defense mechanism is this?",
+                solution: "Answer: Displacement (redirecting unacceptable impulses toward a safer target)."
+            },
+            {
+                id: 5, level: 1,
+                question: "Identify Concept: What type of positive regard is offered without any pre-conditions or prerequisites?",
+                solution: "Answer: Unconditional Positive Regard (Carl Rogers)."
+            },
+            // Level 2 (6 - 10)
+            {
+                id: 6, level: 2,
+                question: "Fictional Character Analysis: Analyze Batman through a Psychodynamic lens. What drives his crime-fighting behavior?",
+                solution: "Solution: Repressed childhood trauma (witnessing his parents' murder) creating an unconscious drive channeled through a rigid Super-Ego mandate."
+            },
+            {
+                id: 7, level: 2,
+                question: "Fictional Character Analysis: Analyze Shrek through a Humanistic lens. Why does he isolate himself at the beginning of the movie?",
+                solution: "Solution: Society's rejection created severe Incongruence and defensive isolation, which heals when he receives genuine acceptance and friendship."
+            },
+            {
+                id: 8, level: 2,
+                question: "Contrast Concepts: Differentiate between the Freudian 'Ego' and the Humanistic 'Self-Concept'.",
+                solution: "Solution: The Ego is a structural mediator balancing instincts and reality; Self-Concept is an organized conscious set of beliefs about one's identity."
+            },
+            {
+                id: 9, level: 2,
+                question: "Scenario Analysis: A student cheats on a test, then rationalizes: 'Everyone else cheats, so it's fine.' Identify the defense mechanism.",
+                solution: "Solution: Rationalization (creating logical or socially acceptable excuses for unacceptable behavior)."
+            },
+            {
+                id: 10, level: 2,
+                question: "Hierarchy Application: According to Maslow, can a student focus effectively on self-esteem needs if their safety needs are threatened daily?",
+                solution: "Solution: No. Lower-order physiological and safety needs must be substantially satisfied before higher esteem or growth needs activate."
+            },
+            // Level 3 (11 - 15)
+            {
+                id: 11, level: 3,
+                question: "Philosophical Critique: Explain why Humanistic psychology is referred to as the 'Third Force' in psychological history.",
+                solution: "Solution: It arose as an alternative to both Psychoanalysis (too pessimistic/deterministic) and Behaviorism (too mechanical/environmentally focused)."
+            },
+            {
+                id: 12, level: 3,
+                question: "Scientific Limitation: What is the primary empirical flaw in Freud's theory of psychosexual development and defense mechanisms?",
+                solution: "Solution: They cannot be scientifically tested or falsified, as unconscious constructs leave no direct empirical physical evidence."
+            },
+            {
+                id: 13, level: 3,
+                question: "Case Evaluation: A high-achieving student experiences panic attacks when getting a 90% grade instead of 100%. Analyze using Rogers' 'Conditions of Worth'.",
+                solution: "Solution: The student internalized conditional positive regard, believing their self-worth depends entirely on absolute perfection, causing severe anxiety."
+            },
+            {
+                id: 14, level: 3,
+                question: "Comparative Evaluation: Compare the role of childhood experiences in Freud's theory versus Rogers' theory.",
+                solution: "Solution: Freud saw childhood as setting immutable unconscious conflicts; Rogers saw childhood as shaping conditional vs. unconditional regard affecting self-concept."
+            },
+            {
+                id: 15, level: 3,
+                question: "Synthesis Question: How does modern positive psychology build upon humanistic foundations while correcting its scientific limitations?",
+                solution: "Solution: Positive psychology adopts humanistic topics (well-being, personal growth) but applies rigorous quantitative scientific experiments to test them."
+            }
+        ];
+
+        /* --------------------------------------------------
+           TAB SWITCHING & FULLSCREEN LOGIC
+        -------------------------------------------------- */
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById(`${tabId}-btn`).classList.add('active');
+        }
+
+        function toggleFullscreen() {
+            const container = document.getElementById('whiteboardContainer');
+            const icon = document.getElementById('fullscreenIcon');
+            
+            if (!document.fullscreenElement) {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                }
+                icon.classList.remove('fa-expand');
+                icon.classList.add('fa-compress');
+                showToast("Entered Fullscreen Digital Whiteboard Mode");
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+                icon.classList.remove('fa-compress');
+                icon.classList.add('fa-expand');
+                showToast("Exited Fullscreen Mode");
+            }
+        }
+
+        /* --------------------------------------------------
+           TAB 2: SOLVED EXAMPLES RENDERING & TTS
+        -------------------------------------------------- */
+        function renderSolvedExamples() {
+            const basicGrid = document.getElementById('basicExamplesGrid');
+            const interGrid = document.getElementById('intermediateExamplesGrid');
+            const advGrid = document.getElementById('advancedExamplesGrid');
+
+            solvedExamplesData.forEach(ex => {
+                const cardHtml = `
+                    <div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:border-montanoBlue transition flex flex-col justify-between space-y-3">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-0.5 rounded-full text-white bg-montanoBlue">
+                                    Example ${ex.id} • ${ex.category}
+                                </span>
+                                <button onclick="speakText('${escapeQuotes(ex.scenario)}')" title="Listen to example" class="text-montanoBlue hover:text-sky-800 p-1.5 rounded-lg bg-sky-50">
+                                    <i class="fa-solid fa-volume-high text-sm"></i>
+                                </button>
+                            </div>
+                            <h5 class="font-bold text-gray-800 text-sm mb-1">${ex.title}</h5>
+                            <p class="text-xs text-gray-600 bg-gray-50 p-2.5 rounded-lg border border-gray-100 mb-2 italic">
+                                "${ex.scenario}"
+                            </p>
+                        </div>
+                        <div class="text-xs text-gray-700 bg-blue-50/60 p-2.5 rounded-lg border-l-2 border-montanoBlue">
+                            <strong>Analysis:</strong> ${ex.explanation}
+                        </div>
+                    </div>
+                `;
+
+                if (ex.level === 1) basicGrid.innerHTML += cardHtml;
+                else if (ex.level === 2) interGrid.innerHTML += cardHtml;
+                else if (ex.level === 3) advGrid.innerHTML += cardHtml;
+            });
+        }
+
+        function escapeQuotes(str) {
+            return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.95;
+                window.speechSynthesis.speak(utterance);
+                showToast("Playing Text-to-Speech audio...");
+            } else {
+                showToast("TTS not supported in this browser environment.", "error");
+            }
+        }
+
+        /* --------------------------------------------------
+           TAB 3: SPEECH SIMULATOR & RECOGNITION & DASHBOARD
+        -------------------------------------------------- */
+        const simPromptsList = [
+            "Compare how Sigmund Freud and Carl Rogers would interpret a fictional character who struggles with severe perfectionism.",
+            "Explain Maslow's Hierarchy of Needs and describe how unmet safety needs affect a student's personal growth.",
+            "Describe Freud's structural model of personality (Id, Ego, Super-Ego) using a concrete real-life dilemma.",
+            "Explain Rogers' concept of self-concept congruence and the role of unconditional positive regard."
+        ];
+        let currentPromptIdx = 0;
+
+        function newSimPrompt() {
+            currentPromptIdx = (currentPromptIdx + 1) % simPromptsList.length;
+            document.getElementById('simPrompt').innerText = `"${simPromptsList[currentPromptIdx]}"`;
+            showToast("New paradigm prompt loaded");
+        }
+
+        let recognition = null;
+        let isRecording = false;
+
+        function initSpeechRecognition() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (SpeechRecognition) {
+                recognition = new SpeechRecognition();
+                recognition.continuous = false;
+                recognition.lang = 'en-US';
+                recognition.interimResults = false;
+
+                recognition.onstart = function() {
+                    isRecording = true;
+                    document.getElementById('recordingBadge').classList.remove('hidden');
+                    document.getElementById('micBtnText').innerText = "Listening... Click to Stop";
+                    document.getElementById('micBtn').classList.replace('bg-rose-600', 'bg-amber-600');
+                };
+
+                recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    document.getElementById('speechTransmittedText').value = transcript;
+                    showToast("Speech captured successfully!");
+                };
+
+                recognition.onerror = function(event) {
+                    showToast("Speech recognition error: " + event.error, "error");
+                    stopRecordingState();
+                };
+
+                recognition.onend = function() {
+                    stopRecordingState();
+                };
+            } else {
+                console.warn("Speech Recognition API not supported in this browser.");
+            }
+        }
+
+        function toggleSpeechRecognition() {
+            if (!recognition) {
+                initSpeechRecognition();
+            }
+
+            if (!recognition) {
+                showToast("Speech recognition is not supported by your browser. Please type your response.", "error");
+                return;
+            }
+
+            if (isRecording) {
+                recognition.stop();
+                stopRecordingState();
+            } else {
+                try {
+                    recognition.start();
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+        }
+
+        function stopRecordingState() {
+            isRecording = false;
+            document.getElementById('recordingBadge').classList.add('hidden');
+            document.getElementById('micBtnText').innerText = "Start Speaking";
+            document.getElementById('micBtn').classList.replace('bg-amber-600', 'bg-rose-600');
+        }
+
+        function evaluateSpeechInput() {
+            const text = document.getElementById('speechTransmittedText').value.trim();
+            if (!text) {
+                showToast("Please provide a spoken or typed response before evaluating.", "error");
+                return;
+            }
+
+            // Keyword analysis for Unit 3 Guide 4
+            const targetKeywords = ["freud", "rogers", "maslow", "unconscious", "id", "ego", "superego", "congruence", "self-concept", "actualization", "regard", "defense", "hierarchy", "growth", "incongruence"];
+            const lowerText = text.toLowerCase();
+            const detected = targetKeywords.filter(kw => lowerText.includes(kw));
+
+            // Calculate scores
+            const wordCount = text.split(/\s+/).length;
+            const pronunciationScore = Math.min(100, Math.max(65, Math.floor(75 + Math.random() * 20)));
+            const accuracyScore = Math.min(100, Math.floor((detected.length / 4) * 50 + (wordCount > 15 ? 40 : 20)));
+            const etiquetteScore = Math.min(100, Math.floor(70 + (lowerText.includes("on the other hand") || lowerText.includes("specifically") || lowerText.includes("in contrast") ? 25 : 10)));
+
+            // Update Bars
+            document.getElementById('scorePronunciationText').innerText = `${pronunciationScore}%`;
+            document.getElementById('barPronunciation').style.width = `${pronunciationScore}%`;
+
+            document.getElementById('scoreAccuracyText').innerText = `${accuracyScore}%`;
+            document.getElementById('barAccuracy').style.width = `${accuracyScore}%`;
+
+            document.getElementById('scoreEtiquetteText').innerText = `${etiquetteScore}%`;
+            document.getElementById('barEtiquette').style.width = `${etiquetteScore}%`;
+
+            // Display detected keywords
+            const badgeContainer = document.getElementById('keywordBadgeContainer');
+            if (detected.length > 0) {
+                badgeContainer.innerHTML = detected.map(kw => 
+                    `<span class="bg-montanoBlue/10 text-montanoBlue font-bold text-xs px-2.5 py-1 rounded-full border border-montanoBlue/30"><i class="fa-solid fa-check mr-1"></i>${kw}</span>`
+                ).join('');
+            } else {
+                badgeContainer.innerHTML = `<span class="text-xs text-rose-500 font-semibold">No target terms detected. Try using words like 'Freud', 'Rogers', 'Unconscious', or 'Self-Concept'.</span>`;
+            }
+
+            // AI Feedback generation
+            let feedback = "";
+            let aiSpeak = "";
+
+            if (accuracyScore >= 75) {
+                feedback = `Outstanding comparative analysis! You successfully integrated terms like ${detected.join(', ')}. Excellent C1 academic vocabulary usage.`;
+                aiSpeak = "Excellent response! You clearly contrasted psychodynamic unconscious forces with humanistic personal growth.";
+            } else {
+                feedback = "Good attempt! Make sure to explicitly compare how Freud and Rogers view human agency and self-determination.";
+                aiSpeak = "Good effort! Try adding specific terms like Id, Super-Ego, or Congruence to enhance your response.";
+            }
+
+            document.getElementById('aiPedagogicalFeedback').innerText = feedback;
+            document.getElementById('aiResponseText').innerText = `"${aiSpeak}"`;
+            
+            speakText(aiSpeak);
+        }
+
+        function speakAIResponse() {
+            const responseText = document.getElementById('aiResponseText').innerText;
+            speakText(responseText);
+        }
+
+        /* --------------------------------------------------
+           TAB 4: REFLECTION SAVING
+        -------------------------------------------------- */
+        function saveReflections() {
+            const r1 = document.getElementById('refl1').value.trim();
+            const r2 = document.getElementById('refl2').value.trim();
+            const r3 = document.getElementById('refl3').value.trim();
+
+            if (!r1 && !r2 && !r3) {
+                showToast("Please write at least one reflection before saving.", "error");
+                return;
+            }
+
+            showToast("Critical Reflections successfully saved to local portfolio!");
+        }
+
+        /* --------------------------------------------------
+           TAB 5: FORMATIVE EVALUATION RENDERING
+        -------------------------------------------------- */
+        function renderFormativeEvaluation() {
+            const container1 = document.getElementById('evalLevel1Container');
+            const container2 = document.getElementById('evalLevel2Container');
+            const container3 = document.getElementById('evalLevel3Container');
+
+            evaluationExercisesData.forEach(item => {
+                const itemHtml = `
+                    <div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm space-y-3">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                            <span class="font-bold text-gray-800 text-sm">
+                                <span class="text-montanoBlue font-extrabold mr-1">Problem ${item.id}.</span> ${item.question}
+                            </span>
+                            <button onclick="toggleSolution(${item.id})" id="solBtn-${item.id}" 
+                                class="text-xs font-bold bg-gray-100 hover:bg-montanoBlue hover:text-white text-gray-700 px-3 py-1.5 rounded-lg transition border border-gray-300 flex items-center gap-1.5 whitespace-nowrap">
+                                <i class="fa-solid fa-eye"></i> <span>Show Solution</span>
+                            </button>
+                        </div>
+                        <div id="solBox-${item.id}" class="hidden bg-emerald-50/70 border-l-4 border-emerald-500 p-3 rounded-r-lg text-xs text-gray-800 space-y-1">
+                            <span class="font-bold text-emerald-800 flex items-center gap-1">
+                                <i class="fa-solid fa-square-check"></i> Step-by-Step Solution & Explanation:
+                            </span>
+                            <p class="text-gray-700">${item.solution}</p>
+                        </div>
+                    </div>
+                `;
+
+                if (item.level === 1) container1.innerHTML += itemHtml;
+                else if (item.level === 2) container2.innerHTML += itemHtml;
+                else if (item.level === 3) container3.innerHTML += itemHtml;
+            });
+        }
+
+        function toggleSolution(id) {
+            const box = document.getElementById(`solBox-${id}`);
+            const btn = document.getElementById(`solBtn-${id}`);
+            const isHidden = box.classList.contains('hidden');
+
+            if (isHidden) {
+                box.classList.remove('hidden');
+                btn.innerHTML = `<i class="fa-solid fa-eye-slash"></i> <span>Hide Solution</span>`;
+                btn.classList.replace('bg-gray-100', 'bg-montanoBlue');
+                btn.classList.add('text-white');
+            } else {
+                box.classList.add('hidden');
+                btn.innerHTML = `<i class="fa-solid fa-eye"></i> <span>Show Solution</span>`;
+                btn.classList.replace('bg-montanoBlue', 'bg-gray-100');
+                btn.classList.remove('text-white');
+            }
+        }
+
+        /* --------------------------------------------------
+           UTILITIES: TOAST NOTIFICATIONS
+        -------------------------------------------------- */
+        function showToast(msg, type = "success") {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            const toastIcon = document.getElementById('toastIcon');
+
+            toastMsg.innerText = msg;
+            if (type === "error") {
+                toastIcon.className = "fa-solid fa-triangle-exclamation text-rose-400";
+            } else {
+                toastIcon.className = "fa-solid fa-circle-check text-emerald-400";
+            }
+
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        /* --------------------------------------------------
+           INITIALIZATION ON WINDOW LOAD
+        -------------------------------------------------- */
+        window.onload = function() {
+            renderSolvedExamples();
+            renderFormativeEvaluation();
+            initSpeechRecognition();
+        };
+    </script>
+</body>
+</html>
